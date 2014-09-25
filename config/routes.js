@@ -32,10 +32,15 @@ module.exports.routes = {
   // },
   //
 
-  'get /login': {view: 'login'},
+  'get /login'  : {view: 'login'},
 
-  'post /login': 'UserController.login'
+  'post /login' : 'UserController.login',
 
+
+  // 'get /user': 'UserController.find',
+  // 'post /user': 'UserController.create',
+  // 'put /user': 'UserController.update',
+  // 'delete /user': 'UserController.destroy'
 
 
   // 'get /somethingelse': 'UserController.foobar'
