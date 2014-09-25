@@ -30,7 +30,9 @@ module.exports.routes = {
   'get /': 'UserController.securePage',
 
   'get /login'  : {view: 'login'},
+  'get /signup' : {view: 'signup'},
 
+  'post /signup' : 'UserController.create',
   'post /login' : 'UserController.login',
   '/logout': 'UserController.logout'
 
