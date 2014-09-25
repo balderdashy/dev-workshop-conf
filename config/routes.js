@@ -32,9 +32,13 @@ module.exports.routes = {
   'get /login'  : {view: 'login'},
   'get /signup' : {view: 'signup'},
 
+  // TODO:
+  // 'get /request-password' : {view: 'TODO'},
+
   'post /signup' : 'UserController.create',
   'post /login' : 'UserController.login',
   'post /me/password' : 'UserController.requestNewPassword',
+  'get /verify' : 'UserController.verifyRequestPasswordToken',
 
   '/logout': 'UserController.logout'
 
