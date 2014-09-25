@@ -37,7 +37,18 @@ module.exports = {
 
   securePage: function (req, res) {
 
-    return res.view('secure');
+    // Look up the currently-logged-in user in the database
+    // So we can pass the view their name and stuff
+    User.findOne({
+      id: req.session.user
+    })
+    .exec(function (err, me) {
+      if (err) return res.negotiate(err);
+
+      return res.view('secure', {
+        user: me
+      });
+    });
   }
 
 };
