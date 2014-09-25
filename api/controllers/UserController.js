@@ -8,10 +8,6 @@
 module.exports = {
 
   login: function (req, res) {
-
-    // email
-    // password
-
     User.findOne({
       email: req.param('email'),
       password: req.param('password')
@@ -30,9 +26,9 @@ module.exports = {
 
       return res.ok();
     });
+  },
 
 
-  }
 
 };
 
