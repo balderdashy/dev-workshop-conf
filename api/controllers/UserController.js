@@ -9,11 +9,29 @@ module.exports = {
 
   login: function (req, res) {
 
-    // This sends an HTTP 200 response with the data
-    // you provided encoded as json.
-    res.json({
-      hello: 'world'
+    // email
+    // password
+
+    User.findOne({
+      email: req.param('email'),
+      password: req.param('password')
+    })
+    .exec(function afterDatabaseResponds(err, user) {
+      if (err) {
+        return res.negotiate(err);
+      }
+
+      if (!user) {
+        return res.notFound();
+      }
+
+      // Save the user id to the session
+      req.session.user = user.id;
+
+      return res.ok();
     });
+
+
   }
 
 };
