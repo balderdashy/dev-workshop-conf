@@ -11,7 +11,25 @@
 
 module.exports.bootstrap = function(cb) {
 
-  // It's very important to trigger this callback method when you are finished
-  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-  cb();
+  User.count({
+    email: 'admin@dev.com'
+  }).exec(function (err, count) {
+    if (err) return cb(err);
+
+    if (count >= 1) {
+      return cb();
+    }
+
+    User.create({
+      email: 'admin@dev.com',
+      password: 'abc123'
+    }).exec(function (err, newUser) {
+      if (err) return cb(err);
+
+      // It's very important to trigger this callback method when you are finished
+      // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+      cb();
+    });
+
+  });
 };
