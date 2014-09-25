@@ -21,6 +21,8 @@ module.exports = {
     name: {
       type: 'string'
     }
-  }
+  },
+
+  connection: 'myLocalMongo'
 };
 
