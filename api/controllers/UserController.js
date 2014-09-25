@@ -29,6 +29,16 @@ module.exports = {
   },
 
 
+  logout: function (req, res) {
+    delete req.session.user;
+    return res.ok();
+  },
+
+
+  securePage: function (req, res) {
+
+    return res.view('secure');
+  }
 
 };
 
