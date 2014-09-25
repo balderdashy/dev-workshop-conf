@@ -34,6 +34,8 @@ module.exports.routes = {
 
   'post /signup' : 'UserController.create',
   'post /login' : 'UserController.login',
+  'post /me/password' : 'UserController.requestNewPassword',
+
   '/logout': 'UserController.logout'
 
   // 'get /user': 'UserController.find',
